@@ -24,6 +24,15 @@ namespace IrcClientDemoCS
         // 100 ms seems to work with most.
         int sleepDelay = 100;
 
+
+        // These are variables for the Control Mode (anarchy vs democracy)
+        public String controlMode = "ANARCHY";
+        public bool democracyModeCanSend = false;
+        public bool allowDemocracymode = true;
+        public List<string> democracyCommandList = new List<string>();
+        int anarchyPercent = 100;
+        int democracyPercent = 0;
+
         // Set the default key bindings.
         // This is really bad code and needs to be changed later.
 #region KeyBindings
@@ -176,6 +185,10 @@ namespace IrcClientDemoCS
             // Start an idle timer.
             idleTimer = new System.Threading.Timer(new TimerCallback(TimerProc));
             idleTimer.Change(600000, 0);    // timer start running
+
+            // Start the democracy timer.
+            democracyTimer = new System.Threading.Timer(new TimerCallback(democracyTimeUp));
+            democracyTimer.Change(10000, 0);
         }
 #endregion
         
@@ -333,6 +346,7 @@ namespace IrcClientDemoCS
                     // TODO: Anarchy vs Democracy bar
                     case "ANARCHY":
                     case "DEMOCRACY":
+                        adjustControlMode(message);
                         break;
                         
                     // If it's not a command, output the text to the IRC output box.
@@ -440,9 +454,6 @@ namespace IrcClientDemoCS
 
             txtSend.Clear();
             txtSend.Focus();
-
-         
-
         }
 
         // Pause button. 
@@ -562,7 +573,54 @@ namespace IrcClientDemoCS
         }
 #endregion
 
+        private void adjustControlMode(string message)
+        {
 
+            if (!allowDemocracymode)
+                return;
+
+            if (message.ToUpper() == "ANARCHY")
+            {
+                anarchyPercent++;
+                democracyPercent--;
+                if (anarchyPercent > 100) { anarchyPercent = 100; }
+                if (democracyPercent < 0) { democracyPercent = 0; }
+            }
+
+            if (message.ToUpper() == "DEMOCRACY")
+            {
+                democracyPercent++;
+                anarchyPercent--;
+                if (democracyPercent > 100) { democracyPercent = 100; }
+                if (anarchyPercent < 0) { anarchyPercent = 0; }
+            }
+
+            if (democracyPercent > anarchyPercent)
+            {
+                controlMode = "DEMOCRACY";
+
+                if (lblDemocracy.Font.Bold == false)
+                    lblDemocracy.Font = new Font(lblDemocracy.Font, lblDemocracy.Font.Style ^ FontStyle.Bold);
+
+                if (lblAnarchy.Font.Bold == true)
+                    lblAnarchy.Font = new Font(lblAnarchy.Font, lblAnarchy.Font.Style ^ FontStyle.Bold);
+            }
+
+            if (anarchyPercent >= democracyPercent)
+            {
+                controlMode = "ANARCHY";
+
+                if (lblDemocracy.Font.Bold == true)
+                    lblDemocracy.Font = new Font(lblDemocracy.Font, lblDemocracy.Font.Style ^ FontStyle.Bold);
+
+                if (lblAnarchy.Font.Bold == false)
+                    lblAnarchy.Font = new Font(lblAnarchy.Font, lblAnarchy.Font.Style ^ FontStyle.Bold);
+
+            }
+
+            lblAnarchyPercent.Text = anarchyPercent.ToString() + "%";
+            lblDemocracyPercent.Text = democracyPercent.ToString() + "%";
+        }
 
 
         // Set the key press delay that the control uses for sending keys to the emulator. 
@@ -614,6 +672,42 @@ namespace IrcClientDemoCS
             //Use the vKCode argument to determine which key is held down
         }
 #endregion
+
+        private void allowDemocracyModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (allowDemocracyModeToolStripMenuItem.Checked == true)
+            {
+                // Turn off democracy mode and reset it back to anarchy at 100%.
+                controlMode = "ANARCHY";
+
+                if (lblDemocracy.Font.Bold == true)
+                    lblDemocracy.Font = new Font(lblDemocracy.Font, lblDemocracy.Font.Style ^ FontStyle.Bold);
+
+                if (lblAnarchy.Font.Bold == false)
+                    lblAnarchy.Font = new Font(lblAnarchy.Font, lblAnarchy.Font.Style ^ FontStyle.Bold);
+
+                allowDemocracyModeToolStripMenuItem.Checked = false;
+
+                lblAnarchyPercent.Text = "100%";
+                lblDemocracyPercent.Text = "0%";
+
+                anarchyPercent = 100;
+                democracyPercent = 0;
+
+                allowDemocracymode = false;
+                return;
+
+            }
+
+            if (allowDemocracyModeToolStripMenuItem.Checked == false)
+            {
+
+                allowDemocracyModeToolStripMenuItem.Checked = true;
+                allowDemocracymode = true;
+                return;
+ 
+            }
+        }
 
 
 

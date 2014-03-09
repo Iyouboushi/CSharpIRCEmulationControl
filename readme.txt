@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////
-////// IRC Emulation Control version 1.4 //////
+////// IRC Emulation Control version 1.5 //////
 ////// By James "Iyouboushi" of esper.net /////
 ///////////////////////////////////////////////
 
@@ -49,7 +49,7 @@ PSX:
 With version 1.4 it is now possible to redefine the key bindings to your liking.  You can read more about that towards the bottom of this document. 
 
 
-So first things first, load IRCEmulationControl-1.4.exe and you'll see a fairly basic IRC client.  Now run the emulator of your choice and load your ROM of choice (you'll have to find those on your own).  Now, back in IRC Emulation Control click Emulators-> (console) -> (your emulator choice here). 
+So first things first, load IRCEmulationControl.exe and you'll see a fairly basic IRC client.  Now run the emulator of your choice and load your ROM of choice (you'll have to find those on your own).  Now, back in IRC Emulation Control click Emulators-> (console) -> (your emulator choice here). 
 
 You can leave the default nickname, channel and server if you want but I would recommend changing those.  If you're going to be connecting to Twitch's chat, you'll need your Oauth twitch password and to make sure the username and channel both match and are in lower case. Put the Oauth password into the password field (don't worry, once you hit connect the password will be **** out).
 
@@ -57,7 +57,7 @@ When you're satisfied with that, you're ready to connect.  Hit CONNECT.
 
 After the bot connects to the channel of your choice, connect to the same channel with another client (such as Mibbit or mIRC, or log into twitch with another account if you're connecting to twitch) and you can type the following commands (one at a time):
 
-UP, DOWN, LEFT, RIGHT, A, B, C, R, L, X, Y, AB, DOWNA, DOWNB, SELECT, START, TRIANGLE, CIRCLE, SQUARE R1, R2, L1, L2
+UP, DOWN, LEFT, RIGHT, A, B, C, R, L, X, Y, AB, DOWNA, DOWNB, SELECT, START, TRIANGLE, CIRCLE, SQUARE R1, R2, L1, L2, ANARCHY, DEMOCRACY
 
 Obviously some of these commands only work in certain emulators/systems (X and Y won't have any effect in an NES emulator, for example).
 

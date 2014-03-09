@@ -121,7 +121,7 @@ namespace IrcClientDemoCS
             this.lblUpdatedOn.Name = "lblUpdatedOn";
             this.lblUpdatedOn.Size = new System.Drawing.Size(155, 13);
             this.lblUpdatedOn.TabIndex = 9;
-            this.lblUpdatedOn.Text = "Updated on: February 25, 2014";
+            this.lblUpdatedOn.Text = "Updated on: February 26, 2014";
             // 
             // frmAbout
             // 

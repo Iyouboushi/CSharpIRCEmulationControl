@@ -60,6 +60,11 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnPause = new System.Windows.Forms.Button();
+            this.lblAnarchy = new System.Windows.Forms.Label();
+            this.lblAnarchyPercent = new System.Windows.Forms.Label();
+            this.lblDemocracy = new System.Windows.Forms.Label();
+            this.lblDemocracyPercent = new System.Windows.Forms.Label();
+            this.allowDemocracyModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +121,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(745, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(749, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "mnuMenuBar";
             // 
@@ -206,7 +211,8 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.keySettingsToolStripMenuItem});
+            this.keySettingsToolStripMenuItem,
+            this.allowDemocracyModeToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "&Settings";
@@ -335,11 +341,61 @@
             this.btnPause.UseVisualStyleBackColor = true;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
+            // lblAnarchy
+            // 
+            this.lblAnarchy.AutoSize = true;
+            this.lblAnarchy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnarchy.Location = new System.Drawing.Point(12, 263);
+            this.lblAnarchy.Name = "lblAnarchy";
+            this.lblAnarchy.Size = new System.Drawing.Size(53, 13);
+            this.lblAnarchy.TabIndex = 17;
+            this.lblAnarchy.Text = "Anarchy";
+            // 
+            // lblAnarchyPercent
+            // 
+            this.lblAnarchyPercent.AutoSize = true;
+            this.lblAnarchyPercent.Location = new System.Drawing.Point(71, 263);
+            this.lblAnarchyPercent.Name = "lblAnarchyPercent";
+            this.lblAnarchyPercent.Size = new System.Drawing.Size(33, 13);
+            this.lblAnarchyPercent.TabIndex = 18;
+            this.lblAnarchyPercent.Text = "100%";
+            // 
+            // lblDemocracy
+            // 
+            this.lblDemocracy.AutoSize = true;
+            this.lblDemocracy.Location = new System.Drawing.Point(119, 263);
+            this.lblDemocracy.Name = "lblDemocracy";
+            this.lblDemocracy.Size = new System.Drawing.Size(61, 13);
+            this.lblDemocracy.TabIndex = 19;
+            this.lblDemocracy.Text = "Democracy";
+            // 
+            // lblDemocracyPercent
+            // 
+            this.lblDemocracyPercent.AutoSize = true;
+            this.lblDemocracyPercent.Location = new System.Drawing.Point(186, 263);
+            this.lblDemocracyPercent.Name = "lblDemocracyPercent";
+            this.lblDemocracyPercent.Size = new System.Drawing.Size(21, 13);
+            this.lblDemocracyPercent.TabIndex = 20;
+            this.lblDemocracyPercent.Text = "0%";
+            // 
+            // allowDemocracyModeToolStripMenuItem
+            // 
+            this.allowDemocracyModeToolStripMenuItem.Checked = true;
+            this.allowDemocracyModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.allowDemocracyModeToolStripMenuItem.Name = "allowDemocracyModeToolStripMenuItem";
+            this.allowDemocracyModeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.allowDemocracyModeToolStripMenuItem.Text = "Allow Democracy Mode";
+            this.allowDemocracyModeToolStripMenuItem.Click += new System.EventHandler(this.allowDemocracyModeToolStripMenuItem_Click);
+            // 
             // IRCEmulationControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 317);
+            this.Controls.Add(this.lblDemocracyPercent);
+            this.Controls.Add(this.lblDemocracy);
+            this.Controls.Add(this.lblAnarchyPercent);
+            this.Controls.Add(this.lblAnarchy);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
@@ -362,7 +418,7 @@
             this.MinimumSize = new System.Drawing.Size(765, 355);
             this.Name = "IRCEmulationControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "IRC Emulation Control - version 1.4";
+            this.Text = "IRC Emulation Control - version 1.5";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -405,6 +461,11 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keyBindingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keyPressDelayToolStripMenuItem1;
+        private System.Windows.Forms.Label lblAnarchy;
+        private System.Windows.Forms.Label lblAnarchyPercent;
+        private System.Windows.Forms.Label lblDemocracy;
+        private System.Windows.Forms.Label lblDemocracyPercent;
+        private System.Windows.Forms.ToolStripMenuItem allowDemocracyModeToolStripMenuItem;
     }
 }
 

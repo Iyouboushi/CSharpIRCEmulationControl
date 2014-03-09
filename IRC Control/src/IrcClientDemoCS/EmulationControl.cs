@@ -1,5 +1,5 @@
 ﻿///////////////////////////////////////////////
-////// IRC Emulation Control version 1.4 //////
+////// IRC Emulation Control version 1.5 //////
 ////// By James "Iyouboushi" of esper.net /////
 ///////////////////////////////////////////////
 // Default Key Bindings for Emu Controls:
@@ -88,12 +88,13 @@ namespace IrcClientDemoCS
         IntPtr handle;
         bool controlPause = false;
 
-
         // Start with BoycottAdvance selected at the start just as a default.
         String emulatorRunning = "BoycottAdvance";
 
+        // Timers.
         const double TIMEOUT = 5000; // milliseconds
         System.Threading.Timer idleTimer;
+        System.Threading.Timer democracyTimer;
 
         // getEmulatorHandle finds the windows handle ID necessary for this program to work based on which emulator is selected.
         // TODO: Make it so it can find the handle of any emulator rather than very specific ones.
@@ -139,6 +140,22 @@ namespace IrcClientDemoCS
         void controlEmulator(string m, string u)
         {
             if (controlPause) { return; }
+
+
+            // If we're in democracy mode, check to see if the bot is able to send a command.  
+            // If not, add it to a count.
+            // If in anarchy mode, just go.
+
+            if (controlMode == "DEMOCRACY")
+            {
+                if (democracyModeCanSend == false)
+                {
+                    // add the command to the array to be sorted.
+                    democracyCommandList.Add(m.ToUpper());
+                    return;
+
+                }
+            }
 
             SetForegroundWindow(handle);
             SetFocus(handle);
@@ -246,6 +263,9 @@ namespace IrcClientDemoCS
 
             // Reset the idle timer back to 10 minutes.
             idleTimer.Change(600000, 0);
+
+            // return democracy mode to a waiting mode and clear the counts.
+            democracyModeCanSend = false;
 
         }
 
@@ -578,7 +598,6 @@ namespace IrcClientDemoCS
                     Thread.Sleep(sleepDelay);
                     Keyboard.KeyUp(Keys.OemSemicolon);
                     break;
-
             }
         }
 #endregion
@@ -594,12 +613,89 @@ namespace IrcClientDemoCS
                 rtbCommands.Invoke(new MethodInvoker(delegate { rtbCommands.AppendText("idleTimer: \u2191 \r\n"); }));
                 rtbCommands.Invoke(new MethodInvoker(delegate { rtbCommands.ScrollToCaret(); }));
                 controlEmulator("UP", "idleTimer");
+                adjustControlMode("ANARCHY");
             }
 
             // Reset the timer back to 10 minutes.
             idleTimer.Change(600000, 0);
 
         }
+
+        private void democracyTimeUp(object state)
+        {
+            democracyTimer.Change(10000, 0);
+
+            if (controlMode != "DEMOCRACY")
+            {
+                democracyTimer.Change(10000, 0);
+                return;
+            }
+
+            if (controlMode == "DEMOCRACY")
+            {
+                String democracyCommand = getMostCommonCommand();
+
+                if (democracyCommand == "NONE")
+                    return;
+
+                rtbOutput.Invoke(new MethodInvoker(delegate { rtbOutput.AppendText("most popular command is: " + democracyCommand + "\r\n"); }));
+                rtbOutput.Invoke(new MethodInvoker(delegate { rtbOutput.ScrollToCaret(); }));
+
+
+                String commandString = democracyCommand;
+
+
+                // TODO: This needs to be nicer.
+                if (commandString == "UP")
+                    commandString = "\u2191";
+                if (commandString == "LEFT")
+                    commandString = "\u2190";
+                if (commandString == "DOWN")
+                    commandString = "\u2193";
+                if (commandString == "RIGHT")
+                    commandString = "\u2192";
+                if (commandString == "DOWNA")
+                    commandString = "\u2193 A";
+                if (commandString == "DOWNB")
+                    commandString = "\u2193 B";
+                if (commandString == "CIRCLE")
+                    commandString = "O";
+                if (commandString == "TRIANGLE")
+                    commandString = "▲";
+                if (commandString == "SQUARE")
+                    commandString = "[]";
+
+
+                rtbCommands.Invoke(new MethodInvoker(delegate { rtbCommands.AppendText("Democratic Vote: " + commandString + "\r\n"); }));
+                rtbCommands.Invoke(new MethodInvoker(delegate { rtbCommands.ScrollToCaret(); }));
+
+                democracyModeCanSend = true;
+                controlEmulator(democracyCommand, "Democracy");
+                democracyCommand = null;
+                democracyCommandList = new List<string>();
+            }
+
+
+
+
+        }
+
+        private string getMostCommonCommand()
+        {
+            try
+            {
+                return (from i in democracyCommandList
+                        group i by i into grp
+                        orderby grp.Count() descending
+                        select grp.Key).First();
+            }
+            catch (Exception democracyEmpty)
+            {
+                return "NONE";
+            }
+            
+        }
+
 
 
     }
