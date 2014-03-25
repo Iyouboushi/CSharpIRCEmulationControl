@@ -119,9 +119,9 @@ namespace IrcClientDemoCS
             this.lblUpdatedOn.AutoSize = true;
             this.lblUpdatedOn.Location = new System.Drawing.Point(68, 103);
             this.lblUpdatedOn.Name = "lblUpdatedOn";
-            this.lblUpdatedOn.Size = new System.Drawing.Size(155, 13);
+            this.lblUpdatedOn.Size = new System.Drawing.Size(144, 13);
             this.lblUpdatedOn.TabIndex = 9;
-            this.lblUpdatedOn.Text = "Updated on: February 26, 2014";
+            this.lblUpdatedOn.Text = "Updated on: March 25, 2014";
             // 
             // frmAbout
             // 

@@ -13,6 +13,7 @@ using System.Threading;
 using System.IO;
 using InputManager;
 using Microsoft.VisualBasic;
+using System.Text.RegularExpressions;
 
 namespace IrcClientDemoCS
 {
@@ -32,6 +33,7 @@ namespace IrcClientDemoCS
         public List<string> democracyCommandList = new List<string>();
         int anarchyPercent = 100;
         int democracyPercent = 0;
+        int numberOfButtonPresses = 1;
 
         // Set the default key bindings.
         // This is really bad code and needs to be changed later.
@@ -256,11 +258,37 @@ namespace IrcClientDemoCS
 
                 string message = m.ToUpper();
                 message = message.Replace(":", "");
+                message = message.Replace(" ", "");
+                message.Trim();
 
+                numberOfButtonPresses = 1;
+
+                // Check to see if there are numbers attached to the button pressed.
+                
+                String button = message;
+               
+
+    //            if (controlMode == "DEMOCRACY")
+    //            {
+                    String numberOfButtonPressesRegEx = Regex.Match(message, @"\d+").Value;
+                    
+                    if (numberOfButtonPressesRegEx != "")
+                    {
+                        button = message.Replace(numberOfButtonPressesRegEx, "");
+                        numberOfButtonPresses = Int32.Parse(numberOfButtonPressesRegEx);
+                    }
+     //           }
+
+
+                    if (numberOfButtonPresses > 5)
+                        numberOfButtonPresses = 5;
+
+                    if (numberOfButtonPresses <= 0)
+                        numberOfButtonPresses = 1;
 
                 // Check to see if it's a command. If it is, display it to the command box
                 // and then pass the command along to the emulation control.
-                switch (message)
+                switch (button)
                 {
                     case "A":
                     case "B":
@@ -276,77 +304,103 @@ namespace IrcClientDemoCS
                     case "SELECT":
                     case "AB":
                     case "BA":
-                        rtbCommands.AppendText(u + ": " + message + "\r\n");
-                        rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
-                        break;
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": " + message + "\r\n");
+                        else
+                         rtbCommands.AppendText(u + ": " + message + " " + numberOfButtonPresses + "\r\n");
 
-                    case "RIGHT2":
-                        rtbCommands.AppendText(u + ": \u2192 \u2192 \r\n");
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
 
                     case "UP":
-                        rtbCommands.AppendText(u + ": \u2191 \r\n");
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": \u2191 " + numberOfButtonPresses + "\r\n");
+                       else
+                            rtbCommands.AppendText(u + ": \u2191 \r\n");
+
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
 
                     case "LEFT":
-                        rtbCommands.AppendText(u + ": \u2190 \r\n");
-                        rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
-                        break;
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": \u2190 " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": \u2190 \r\n");
 
-                    case "LEFT2":
-                        rtbCommands.AppendText(u + ": \u2190 \u2190 \r\n");
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
 
                     case "DOWN":
-                        rtbCommands.AppendText(u + ": \u2193 \r\n");
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": \u2193 " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": \u2193 \r\n");
+
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
 
                     case "RIGHT":
-                        rtbCommands.AppendText(u + ": \u2192 \r\n");
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": \u2192 " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": \u2192 \r\n");
+
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
 
                     case "DOWNA":
-                        rtbCommands.AppendText(u + ": \u2193 A \r\n");
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": \u2193 A " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": \u2193 A \r\n");
+
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
 
                     case "DOWNB":
-                        rtbCommands.AppendText(u + ": \u2193 B \r\n");
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": \u2193 B " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": \u2193 B \r\n");
+
                         rtbCommands.ScrollToCaret();
-                        controlEmulator(message, u);
+                        controlEmulator(button, u);
                         break;
                     case "O":
                     case "CIRCLE":
-                        rtbCommands.AppendText(u +": O \r\n");
-                        controlEmulator(message, u);
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": O " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u +": O \r\n");
+
+                        controlEmulator(button, u);
                         break;
                     case "TRIANGLE":
-                        rtbCommands.AppendText(u + ": ▲ \r\n");
-                        controlEmulator(message, u);
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": ▲ " + numberOfButtonPresses + "\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": ▲ \r\n");
+
+                        controlEmulator(button, u);
                         break;
                     case "SQUARE":
-                        rtbCommands.AppendText(u + ": [] \r\n");
-                        controlEmulator(message, u);
+                        if (numberOfButtonPresses > 1)
+                            rtbCommands.AppendText(u + ": [] " + numberOfButtonPresses +"\r\n");
+                        else
+                            rtbCommands.AppendText(u + ": [] \r\n");
+
+                        controlEmulator(button, u);
                         break;
 
-
-                    // TODO: Anarchy vs Democracy bar
                     case "ANARCHY":
                     case "DEMOCRACY":
-                        adjustControlMode(message);
+                        adjustControlMode(button);
                         break;
                         
                     // If it's not a command, output the text to the IRC output box.

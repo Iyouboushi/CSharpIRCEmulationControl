@@ -1,5 +1,5 @@
 ﻿///////////////////////////////////////////////
-////// IRC Emulation Control version 1.5 //////
+////// IRC Emulation Control version 1.6 //////
 ////// By James "Iyouboushi" of esper.net /////
 ///////////////////////////////////////////////
 // Default Key Bindings for Emu Controls:
@@ -97,7 +97,6 @@ namespace IrcClientDemoCS
         System.Threading.Timer democracyTimer;
 
         // getEmulatorHandle finds the windows handle ID necessary for this program to work based on which emulator is selected.
-        // TODO: Make it so it can find the handle of any emulator rather than very specific ones.
         void getEmulatorHandle()
         {
 
@@ -273,332 +272,338 @@ namespace IrcClientDemoCS
         private void pressButton(string buttonPressed)
         {
 
-            switch (buttonPressed.ToUpper())
+            int i = 0;
+            do
             {
-                case "UP":
-                    Keyboard.KeyDown(Keys.Up);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Up);
-                    break;
+                switch (buttonPressed.ToUpper())
+                {
+                    case "UP":
+                        Keyboard.KeyDown(Keys.Up);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Up);
+                        break;
 
-                case "DOWN":
-                    Keyboard.KeyDown(Keys.Down);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Down);
-                    break;
+                    case "DOWN":
+                        Keyboard.KeyDown(Keys.Down);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Down);
+                        break;
 
-                case "LEFT":
-                    Keyboard.KeyDown(Keys.Left);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Left);
-                    break;
+                    case "LEFT":
+                        Keyboard.KeyDown(Keys.Left);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Left);
+                        break;
 
-                case "RIGHT":
-                    Keyboard.KeyDown(Keys.Right);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Right);
-                    break;
+                    case "RIGHT":
+                        Keyboard.KeyDown(Keys.Right);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Right);
+                        break;
 
-                case "A":
-                    Keyboard.KeyDown(Keys.A);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.A);
-                    break;
+                    case "A":
+                        Keyboard.KeyDown(Keys.A);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.A);
+                        break;
 
-                case "B":
-                    Keyboard.KeyDown(Keys.B);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.B);
-                    break;
+                    case "B":
+                        Keyboard.KeyDown(Keys.B);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.B);
+                        break;
 
-                case "C":
-                    Keyboard.KeyDown(Keys.C);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.C);
-                    break;
+                    case "C":
+                        Keyboard.KeyDown(Keys.C);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.C);
+                        break;
 
-                case "D":
-                    Keyboard.KeyDown(Keys.D);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.D);
-                    break;
+                    case "D":
+                        Keyboard.KeyDown(Keys.D);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.D);
+                        break;
 
-                case "E":
-                    Keyboard.KeyDown(Keys.E);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.E);
-                    break;
+                    case "E":
+                        Keyboard.KeyDown(Keys.E);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.E);
+                        break;
 
-                case "F":
-                    Keyboard.KeyDown(Keys.F);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.F);
-                    break;
+                    case "F":
+                        Keyboard.KeyDown(Keys.F);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.F);
+                        break;
 
-                case "G":
-                    Keyboard.KeyDown(Keys.G);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.G);
-                    break;
+                    case "G":
+                        Keyboard.KeyDown(Keys.G);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.G);
+                        break;
 
-                case "H":
-                    Keyboard.KeyDown(Keys.H);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.H);
-                    break;
+                    case "H":
+                        Keyboard.KeyDown(Keys.H);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.H);
+                        break;
 
-                case "I":
-                    Keyboard.KeyDown(Keys.I);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.I);
-                    break;
+                    case "I":
+                        Keyboard.KeyDown(Keys.I);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.I);
+                        break;
 
-                case "J":
-                    Keyboard.KeyDown(Keys.J);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.J);
-                    break;
+                    case "J":
+                        Keyboard.KeyDown(Keys.J);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.J);
+                        break;
 
-                case "K":
-                    Keyboard.KeyDown(Keys.K);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.K);
-                    break;
+                    case "K":
+                        Keyboard.KeyDown(Keys.K);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.K);
+                        break;
 
-                case "L":
-                    Keyboard.KeyDown(Keys.L);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.L);
-                    break;
+                    case "L":
+                        Keyboard.KeyDown(Keys.L);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.L);
+                        break;
 
-                case "M":
-                    Keyboard.KeyDown(Keys.M);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.M);
-                    break;
+                    case "M":
+                        Keyboard.KeyDown(Keys.M);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.M);
+                        break;
 
-                case "N":
-                    Keyboard.KeyDown(Keys.N);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.N);
-                    break;
+                    case "N":
+                        Keyboard.KeyDown(Keys.N);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.N);
+                        break;
 
-                case "O":
-                    Keyboard.KeyDown(Keys.O);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.O);
-                    break;
+                    case "O":
+                        Keyboard.KeyDown(Keys.O);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.O);
+                        break;
 
-                case "P":
-                    Keyboard.KeyDown(Keys.P);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.P);
-                    break;
+                    case "P":
+                        Keyboard.KeyDown(Keys.P);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.P);
+                        break;
 
-                case "Q":
-                    Keyboard.KeyDown(Keys.Q);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Q);
-                    break;
+                    case "Q":
+                        Keyboard.KeyDown(Keys.Q);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Q);
+                        break;
 
-                case "R":
-                    Keyboard.KeyDown(Keys.R);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.R);
-                    break;
+                    case "R":
+                        Keyboard.KeyDown(Keys.R);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.R);
+                        break;
 
-                case "S":
-                    Keyboard.KeyDown(Keys.S);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.S);
-                    break;
+                    case "S":
+                        Keyboard.KeyDown(Keys.S);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.S);
+                        break;
 
-                case "T":
-                    Keyboard.KeyDown(Keys.T);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.T);
-                    break;
+                    case "T":
+                        Keyboard.KeyDown(Keys.T);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.T);
+                        break;
 
-                case "U":
-                    Keyboard.KeyDown(Keys.U);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.U);
-                    break;
+                    case "U":
+                        Keyboard.KeyDown(Keys.U);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.U);
+                        break;
 
-                case "V":
-                    Keyboard.KeyDown(Keys.V);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.V);
-                    break;
+                    case "V":
+                        Keyboard.KeyDown(Keys.V);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.V);
+                        break;
 
-                case "W":
-                    Keyboard.KeyDown(Keys.W);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.W);
-                    break;
+                    case "W":
+                        Keyboard.KeyDown(Keys.W);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.W);
+                        break;
 
-                case "X":
-                    Keyboard.KeyDown(Keys.X);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.X);
-                    break;
+                    case "X":
+                        Keyboard.KeyDown(Keys.X);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.X);
+                        break;
 
-                case "Y":
-                    Keyboard.KeyDown(Keys.Y);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Y);
-                    break;
+                    case "Y":
+                        Keyboard.KeyDown(Keys.Y);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Y);
+                        break;
 
-                case "Z":
-                    Keyboard.KeyDown(Keys.Z);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Z);
-                    break;
+                    case "Z":
+                        Keyboard.KeyDown(Keys.Z);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Z);
+                        break;
 
-                case "LCTRL":
-                    Keyboard.KeyDown(Keys.LControlKey);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.LControlKey);
-                    break;
+                    case "LCTRL":
+                        Keyboard.KeyDown(Keys.LControlKey);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.LControlKey);
+                        break;
 
-                case "RCTRL":
-                    Keyboard.KeyDown(Keys.RControlKey);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.RControlKey);
-                    break;
+                    case "RCTRL":
+                        Keyboard.KeyDown(Keys.RControlKey);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.RControlKey);
+                        break;
 
-                case "ALT":
-                    Keyboard.KeyDown(Keys.Alt);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Alt);
-                    break;
+                    case "ALT":
+                        Keyboard.KeyDown(Keys.Alt);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Alt);
+                        break;
 
-                case "SPACE":
-                    Keyboard.KeyDown(Keys.Space);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Space);
-                    break;
+                    case "SPACE":
+                        Keyboard.KeyDown(Keys.Space);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Space);
+                        break;
 
-                case "LSHIFT":
-                    Keyboard.KeyDown(Keys.LShiftKey);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.LShiftKey);
-                    break;
+                    case "LSHIFT":
+                        Keyboard.KeyDown(Keys.LShiftKey);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.LShiftKey);
+                        break;
 
-                case "RSHIFT":
-                    Keyboard.KeyDown(Keys.RShiftKey);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.RShiftKey);
-                    break;
+                    case "RSHIFT":
+                        Keyboard.KeyDown(Keys.RShiftKey);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.RShiftKey);
+                        break;
 
-                case "ENTER":
-                    Keyboard.KeyDown(Keys.Enter);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Enter);
-                    break;
+                    case "ENTER":
+                        Keyboard.KeyDown(Keys.Enter);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Enter);
+                        break;
 
-                case "NUMPAD0":
-                    Keyboard.KeyDown(Keys.NumPad0);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad0);
-                    break;
+                    case "NUMPAD0":
+                        Keyboard.KeyDown(Keys.NumPad0);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad0);
+                        break;
 
-                case "NUMPAD1":
-                    Keyboard.KeyDown(Keys.NumPad1);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad1);
-                    break;
+                    case "NUMPAD1":
+                        Keyboard.KeyDown(Keys.NumPad1);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad1);
+                        break;
 
-                case "NUMPAD2":
-                    Keyboard.KeyDown(Keys.NumPad2);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad2);
-                    break;
+                    case "NUMPAD2":
+                        Keyboard.KeyDown(Keys.NumPad2);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad2);
+                        break;
 
-                case "NUMPAD3":
-                    Keyboard.KeyDown(Keys.NumPad3);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad3);
-                    break;
+                    case "NUMPAD3":
+                        Keyboard.KeyDown(Keys.NumPad3);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad3);
+                        break;
 
-                case "NUMPAD4":
-                    Keyboard.KeyDown(Keys.NumPad4);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad4);
-                    break;
+                    case "NUMPAD4":
+                        Keyboard.KeyDown(Keys.NumPad4);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad4);
+                        break;
 
-                case "NUMPAD5":
-                    Keyboard.KeyDown(Keys.NumPad5);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad5);
-                    break;
+                    case "NUMPAD5":
+                        Keyboard.KeyDown(Keys.NumPad5);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad5);
+                        break;
 
-                case "NUMPAD6":
-                    Keyboard.KeyDown(Keys.NumPad6);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad6);
-                    break;
+                    case "NUMPAD6":
+                        Keyboard.KeyDown(Keys.NumPad6);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad6);
+                        break;
 
-                case "NUMPAD7":
-                    Keyboard.KeyDown(Keys.NumPad7);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad7);
-                    break;
+                    case "NUMPAD7":
+                        Keyboard.KeyDown(Keys.NumPad7);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad7);
+                        break;
 
-                case "NUMPAD8":
-                    Keyboard.KeyDown(Keys.NumPad8);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad8);
-                    break;
+                    case "NUMPAD8":
+                        Keyboard.KeyDown(Keys.NumPad8);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad8);
+                        break;
 
-                case "NUMPAD9":
-                    Keyboard.KeyDown(Keys.NumPad9);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.NumPad9);
-                    break;
+                    case "NUMPAD9":
+                        Keyboard.KeyDown(Keys.NumPad9);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.NumPad9);
+                        break;
 
-                case "HOME":
-                    Keyboard.KeyDown(Keys.Home);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Home);
-                    break;
+                    case "HOME":
+                        Keyboard.KeyDown(Keys.Home);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Home);
+                        break;
 
-                case "INSERT":
-                    Keyboard.KeyDown(Keys.Insert);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Insert);
-                    break;
+                    case "INSERT":
+                        Keyboard.KeyDown(Keys.Insert);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Insert);
+                        break;
 
-                case "DELETE":
-                    Keyboard.KeyDown(Keys.Delete);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.Delete);
-                    break;
+                    case "DELETE":
+                        Keyboard.KeyDown(Keys.Delete);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.Delete);
+                        break;
 
-                case "END":
-                    Keyboard.KeyDown(Keys.End);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.End);
-                    break;
+                    case "END":
+                        Keyboard.KeyDown(Keys.End);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.End);
+                        break;
 
-                case "PAGEUP":
-                    Keyboard.KeyDown(Keys.PageUp);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.PageUp);
-                    break;
+                    case "PAGEUP":
+                        Keyboard.KeyDown(Keys.PageUp);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.PageUp);
+                        break;
 
-                case "PAGEDOWN":
-                    Keyboard.KeyDown(Keys.PageDown);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.PageDown);
-                    break;
+                    case "PAGEDOWN":
+                        Keyboard.KeyDown(Keys.PageDown);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.PageDown);
+                        break;
 
-                case ";":
-                    Keyboard.KeyDown(Keys.OemSemicolon);
-                    Thread.Sleep(sleepDelay);
-                    Keyboard.KeyUp(Keys.OemSemicolon);
-                    break;
-            }
+                    case ";":
+                        Keyboard.KeyDown(Keys.OemSemicolon);
+                        Thread.Sleep(sleepDelay);
+                        Keyboard.KeyUp(Keys.OemSemicolon);
+                        break;
+                }
+                i++;
+                Thread.Sleep(200);
+            } while (i < numberOfButtonPresses);
         }
 #endregion
 
